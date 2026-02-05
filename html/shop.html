@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Carley Sorensen">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AquaAncient Museum - Souvenir Shop</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Souvenir Shop</h1>
+    <p class="author">Author: Carley Sorensen</p>
+</header>
+
+<nav>
+    <button onclick="location.href='../index.html'">Home</button>
+    <button onclick="location.href='staff.html'">Staff</button>
+    <button onclick="location.href='collections.html'">Collections</button>
+    <button onclick="location.href='history.html'">History</button>
+    <button onclick="location.href='shop.html'">Shop</button>
+</nav>
+
+<main>
+    <h2>Take a Piece of the Deep Home</h2>
+
+    <div class="shop-container">
+
+        <div class="souvenir-item"
+             data-id="item001"
+             title="Replica of the Starbone Fossil">
+
+            <img src="../images/Starbonefossilreplica.png"
+     alt="Starbone fossil replica"
+     onclick="openModal(this)">
+
+            <h3>Starbone Fossil Replica</h3>
+
+            <p>
+                Material: Resin<br>
+                Found: Coral trench burial site<br>
+                Purpose: Ceremonial relic
+            </p>
+
+            <p class="price">$24.99</p>
+
+            <button onclick="addToCart('item001')">
+                Add Starbone Fossil Replica to Cart
+            </button>
+        </div>
+
+        <div class="souvenir-item"
+             data-id="item002"
+             title="Magic Conch of the Ammonite Shell">
+
+            <img src="../images/Magicconchreplica.png"
+     alt="Magic conch shell replica"
+     onclick="openModal(this)">
+
+            <h3>Magic Conch Replica</h3>
+
+            <p>
+                Material: Cast shell resin<br>
+                Found: Ammonite burial cluster<br>
+                Purpose: Ritual guidance tool
+            </p>
+
+            <p class="price">$18.50</p>
+
+            <button onclick="addToCart('item002')">
+                Add Magic Conch Replica to Cart
+            </button>
+        </div>
+
+        <div class="souvenir-item"
+             data-id="item003"
+             title="Scent of the Coral Queen">
+
+            <img src="../images/Coralqueenincense.png"
+     alt="Coral Queen incense"
+     onclick="openModal(this)">
+
+            <h3>Coral Queen Incense</h3>
+
+            <p>
+                Material: Resin incense<br>
+                Found: Temple ash pit<br>
+                Purpose: Ceremonial fragrance
+            </p>
+
+            <p class="price">$12.00</p>
+
+            <button onclick="addToCart('item003')">
+                Add Coral Queen Incense to Cart
+            </button>
+        </div>
+
+        <div class="souvenir-item"
+             data-id="item004"
+             title="Totem of the Deep Ur">
+
+            <img src="../images/Deepurtotem.png"
+     alt="Deep Ur totem figurine"
+     onclick="openModal(this)">
+
+            <h3>Deep Ur Totem</h3>
+
+            <p>
+                Material: Carved wood replica<br>
+                Found: Submerged shrine<br>
+                Purpose: Protective household icon
+            </p>
+
+            <p class="price">$29.95</p>
+
+            <button onclick="addToCart('item004')">
+                Add Deep Ur Totem to Cart
+            </button>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>This is a fictitious website created purely for academic purposes.</p>
+</footer>
+
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImage" class="modal-content" alt="Large item image">
+</div>
+
+<script>
+function openModal(img) {
+    document.getElementById("imageModal").style.display = "block";
+    document.getElementById("modalImage").src = img.src;
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+function addToCart(itemId) {
+    alert("Item " + itemId + " added to cart!");
+}
+</script>
+
+</body>
+</html>
