@@ -127,3 +127,105 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.3);
     max-width: 900px;
 }
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.souvenir-item {
+    width: 230px;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.souvenir-item img {
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.price {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 60%;
+    border-radius: 8px;
+}
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px;
+}
+
+.souvenir-item {
+    background-color: rgba(0, 51, 68, 0.85);
+    border-radius: 12px;
+    padding: 15px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.souvenir-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.7);
+}
+
+.souvenir-item img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.souvenir-item h3 {
+    color: #00ffcc;
+    margin: 10px 0 5px;
+}
+
+.souvenir-item p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.souvenir-item button {
+    background-color: #00cc99;
+    color: #003344;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.souvenir-item button:hover {
+    background-color: #b0ffe0;
+}
