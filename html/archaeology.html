@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Carley Sorensen">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AquaAncient Museum - Archaeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<header>
+    <h1>Archaeology Collection</h1>
+    <p class="author">Author: Carley Sorensen</p>
+</header>
+
+<main>
+
+<p class="ai-note" style="text-align:center; margin:20px;">
+    All images were drawn by a human. AI assistance use for some text.
+</p>
+
+<p style="text-align:center; margin-bottom:20px;">
+    Click any image to view its interpretation.
+</p>
+
+<section class="content-box">
+    <h2>Archaeology Collection</h2>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts5.png"
+             alt="Fossil of a prehistoric fish"
+             class="open-modal"
+             data-modal-target="#modal-text-stormcaller">
+        <div>
+            <h3>Stormcaller Fish Fossil</h3>
+            <p>Believed to sense storms and guide early tribes to safety.</p>
+        </div>
+    </div>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts1.png"
+             alt="Scythe-like sea tool"
+             class="open-modal"
+             data-modal-target="#modal-text-reaper">
+        <div>
+            <h3>Tidal Reaper</h3>
+            <p>A ceremonial blade that emits a faint resonance.</p>
+        </div>
+    </div>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts6.png"
+             alt="Glowing coral anomaly"
+             class="open-modal"
+             data-modal-target="#modal-text-coral">
+        <div>
+            <h3>Luminous Flesh Coral</h3>
+            <p>A softly glowing coral believed to have lit deep habitats.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>This is a fictitious website created purely for academic purposes.</p>
+</footer>
+
+<!-- MODAL SHELL -->
+<div class="modal" id="modal" style="display:none">
+  <div class="modal-content">
+    <button class="close-modal">x</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- HIDDEN MODAL CONTENT -->
+
+<div class="modal-item" id="modal-text-stormcaller" hidden>
+  <h2>Stormcaller Fish Fossil</h2>
+  <p><strong>Material:</strong> Mineralized bone and stone matrix</p>
+  <p><strong>Function:</strong> Ritual weather charm</p>
+  <p><strong>Location Found:</strong> Shatterreef Basin</p>
+  <p>Stormcaller Fish Fossil
+
+Material: Mineralized bone and stone matrix
+Function: Ritual or symbolic object
+Location Found: Shatterreef Basin coastal dig
+
+Legends claim this fish sensed storms days before landfall, and many coastal communities treated it as a living warning system. Its hollow cranial cavity and polished dorsal ridge suggest deliberate human modification, possibly to enhance the sound it produced when wind or water passed through it. Some historians believe the fossil was suspended near shorelines, where it would emit low whistles or vibrations as pressure changed, signaling the approach of dangerous weather. Others argue it was carried by traveling groups as a protective charm, its unusual shape and texture making it easy to grip even with wet hands. It exhibited some aggressive behaviour and had the ability to generate loud sounds when predators are detected, scaring them off and protecting its carriers. Oral traditions describe elders listening to the fossil at night, claiming it “spoke” before great storms. Whether these stories reflect real environmental awareness or symbolic belief, the Stormcaller Fish Fossil appears to have played an important role in coastal survival and ritual life.
+</p>
+</div>
+
+<div class="modal-item" id="modal-text-reaper" hidden>
+  <h2>Tidal Reaper</h2>
+  <p><strong>Material:</strong> Unknown crystalline alloy</p>
+  <p><strong>Function:</strong> Ceremonial weapon</p>
+  <p><strong>Location Found:</strong> Blackglass Cavern</p>
+  <p>This blade appears untouched by time, its surface smooth and uncorroded despite centuries of exposure to saltwater. When held to the ear, it emits a faint resonance resembling distant voices or the echo of waves inside a cave. Researchers have debated whether this sound is caused by trapped air chambers within the crystalline structure or by some unknown acoustic property of the material itself. Its seamless construction suggests it was grown rather than forged, possibly shaped slowly through chemical or biological processes rather than hammered into form. Ritual markings near the handle indicate it may have been used in ceremonial performances rather than combat. Some scholars believe it symbolized the harvesting of tides or the cutting away of bad fortune, while others argue it represented authority among coastal leaders. Whatever its true purpose, the Tidal Reaper stands as one of the most mysterious and carefully preserved artifacts in the collection.</p>
+</div>
+
+<div class="modal-item" id="modal-text-coral" hidden>
+  <h2>Luminous Flesh Coral</h2>
+  <p><strong>Material:</strong> Calcified organic tissue</p>
+  <p><strong>Function:</strong> Living light source</p>
+  <p><strong>Location Found:</strong> Deep trench chamber</p>
+  <p>Luminous Flesh Coral
+
+Material: Calcified organic tissue
+Function: Light source or ritual object
+Location Found: Deep trench excavation
+
+This coral emits a faint glow even in its preserved state, suggesting it once possessed strong bioluminescent properties. Growth patterns indicate that it was not simply harvested from the ocean floor, but carefully cultivated in clusters, possibly within controlled chambers or underwater gardens. Some researchers believe ancient communities encouraged its growth along cave walls or around ceremonial spaces to provide a steady, natural light source. The coral’s soft, branching structure would have created a gentle glow, casting shifting patterns across stone surfaces. In symbolic contexts, the living light may have represented guidance, rebirth, or the presence of spirits within the depths. Fragments found near ritual sites suggest it may also have been offered as a sacred object or used in processions. Even in its fossilized state, the coral’s faint shimmer continues to captivate observers, hinting at the beauty and mystery it once brought to the darkest places.
+</p>
+</div>
+
+<script>
+(function(){
+  const modal      = document.getElementById('modal');
+  const modalBody  = document.getElementById('modal-body');
+  const closeBtn   = modal.querySelector('.close-modal');
+  let lastTrigger  = null;
+
+  function openFrom(selector, trigger){
+    const src = document.querySelector(selector);
+    if (!src) { console.warn('Missing modal content:', selector); return; }
+    modalBody.innerHTML = src.innerHTML;
+    modal.style.display = 'block';
+    lastTrigger = trigger || null;
+    closeBtn.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+    modalBody.innerHTML = '';
+    document.body.style.overflow = '';
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.addEventListener('click', (e)=>{
+    const trigger = e.target.closest('[data-modal-target]');
+    if (trigger){
+      e.preventDefault();
+      openFrom(trigger.getAttribute('data-modal-target'), trigger);
+      return;
+    }
+    if (e.target === modal || e.target.closest('.close-modal')) closeModal();
+  });
+
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+  });
+})();
+</script>
+
+<script src="../js/modal.js"></script>
+</body>
+</html>

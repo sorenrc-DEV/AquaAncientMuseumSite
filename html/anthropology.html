@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Carley Sorensen">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AquaAncient Museum - Anthropology</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<header>
+    <h1>Anthropology Collection</h1>
+    <p class="author">Author: Carley Sorensen</p>
+</header>
+
+<main>
+
+<p class="ai-note" style="text-align:center; margin:20px;">
+    All images were drawn by a human. AI assistance use for some text.
+</p>
+
+<p style="text-align:center; margin-bottom:20px;">
+    Click any image to view its interpretation.
+</p>
+
+<section class="content-box">
+    <h2>Anthropology Collection</h2>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts2.png"
+             alt="Prehistoric shark tooth"
+             class="open-modal"
+             data-modal-target="#modal-text-fang">
+        <div>
+            <h3>Abyssal Fang</h3>
+            <p>A shark tooth worn as protection against predators.</p>
+        </div>
+    </div>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts3.png"
+             alt="Ammonite shell conch"
+             class="open-modal"
+             data-modal-target="#modal-text-conch">
+        <div>
+            <h3>Whispering Conch</h3>
+            <p>A shell believed to answer questions when shaken.</p>
+        </div>
+    </div>
+
+    <div class="staff-profile">
+        <img src="../images/collections/Artifacts4.png"
+             alt="Seaweed impression fossil"
+             class="open-modal"
+             data-modal-target="#modal-text-tideleaf">
+        <div>
+            <h3>Tideleaf Impression</h3>
+            <p>A seaweed fossil symbolizing renewal.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>This is a fictitious website created purely for academic purposes.</p>
+</footer>
+
+<!-- MODAL SHELL -->
+<div class="modal" id="modal" style="display:none">
+  <div class="modal-content">
+    <button class="close-modal">x</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- HIDDEN MODAL CONTENT -->
+
+<div class="modal-item" id="modal-text-fang" hidden>
+  <h2>Abyssal Fang</h2>
+  <p><strong>Material:</strong> Fossilized dentin and enamel</p>
+  <p><strong>Function:</strong> Protective ornament</p>
+  <p><strong>Location Found:</strong> Reef burial mound</p>
+  <p>This massive tooth was drilled and worn as a pendant, likely suspended from woven fibers or leather cords. Its size and sharp edges would have made it an impressive symbol of strength, especially in communities that depended on the sea for survival. Coastal cultures believed the fang carried the spirit of the predator it once belonged to, granting the wearer courage and protection during long ocean journeys. Some burial sites show individuals interred with similar teeth placed over the chest, suggesting they were valued both in life and in death. The drilled hole is carefully smoothed, indicating it was worn for extended periods rather than displayed occasionally. Scratches along the surface hint at contact with tools or armor, possibly from ritual combat or symbolic trials. Whether used as a charm, status symbol, or protective token, the Abyssal Fang represents the deep respect ancient peoples held for the power of ocean predators.</p>
+</div>
+
+<div class="modal-item" id="modal-text-conch" hidden>
+  <h2>Whispering Conch</h2>
+  <p><strong>Material:</strong> Fossilized ammonite shell</p>
+  <p><strong>Function:</strong> Ritual decision tool</p>
+  <p><strong>Location Found:</strong> Tidal flat ceremony site</p>
+  <p>Whispering Conch
+
+Material: Fossilized shell with calcite infill
+Function: Ritual decision-making object
+Location Found: Tidal flat burial site
+
+This shell was used in rituals where participants asked it questions for guidance, believing the sounds within carried answers from the sea. It’s theorized that most replies were often vague like, “I don’t think so,” or “Maybe some day.” The smooth interior suggests frequent handling, and the edges show signs of polishing, possibly from repeated ceremonial use. Some traditions describe leaders holding the conch to their ear before making decisions, interpreting the echoing noises as approval or warning. Others suggest it functioned more like a symbolic oracle, where the act of asking a question encouraged reflection rather than literal prophecy. Its spiral shape, often associated with cycles and journeys, may have reinforced its role as a guide through uncertain choices. Fragments of similar shells have been found near council circles and ceremonial fires, indicating it played a part in important gatherings. Whether treated as a sacred voice or a tool for meditation, the Whispering Conch appears to have been central to spiritual decision-making practices.
+</p>
+</div>
+
+<div class="modal-item" id="modal-text-tideleaf" hidden>
+  <h2>Tideleaf Impression</h2>
+  <p><strong>Material:</strong> Stone slab</p>
+  <p><strong>Function:</strong> Decorative or symbolic object</p>
+  <p><strong>Location Found:</strong> Cliffside dwelling site</p>
+  <p>This fossilized seaweed imprint shows polished corners, suggesting it was displayed or handled often rather than left as a simple geological sample. Its delicate branching patterns resemble growing plants, making it a natural symbol of renewal, fertility, and the rhythms of the ocean. Some researchers believe it was placed near doorways or sleeping areas as a sign of protection and steady growth. Others argue it may have been used in seasonal rituals, where the turning of tides and currents represented the passing of time. Traces of pigment along one edge hint that it may once have been painted or decorated, adding to its symbolic value. Similar impressions have been found in communal living spaces, suggesting it held meaning beyond a single household. Whether viewed as a protective charm, a seasonal marker, or a decorative object, the Tideleaf Impression reflects the close relationship between ancient coastal communities and the natural cycles around them.</p>
+</div>
+
+<script>
+(function(){
+  const modal      = document.getElementById('modal');
+  const modalBody  = document.getElementById('modal-body');
+  const closeBtn   = modal.querySelector('.close-modal');
+  let lastTrigger  = null;
+
+  function openFrom(selector, trigger){
+    const src = document.querySelector(selector);
+    if (!src) { console.warn('Missing modal content:', selector); return; }
+    modalBody.innerHTML = src.innerHTML;
+    modal.style.display = 'block';
+    lastTrigger = trigger || null;
+    closeBtn.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+    modalBody.innerHTML = '';
+    document.body.style.overflow = '';
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.addEventListener('click', (e)=>{
+    const trigger = e.target.closest('[data-modal-target]');
+    if (trigger){
+      e.preventDefault();
+      openFrom(trigger.getAttribute('data-modal-target'), trigger);
+      return;
+    }
+    if (e.target === modal || e.target.closest('.close-modal')) closeModal();
+  });
+
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+  });
+})();
+</script>
+
+<script src="../js/modal.js"></script>
+</body>
+</html>
