@@ -164,7 +164,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.95);
 }
 
 .modal-content {
@@ -227,5 +227,55 @@ footer {
 }
 
 .souvenir-item button:hover {
+    background-color: #b0ffe0;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.collection-card {
+    background: rgba(0, 20, 40, 0.9);
+    border: 3px solid #4cc9f0;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+.collection-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #90e0ef;
+    margin-bottom: 10px;
+}
+
+.collection-card h3 {
+    color: #caf0f8;
+    margin: 10px 0 5px 0;
+}
+
+.collection-card p {
+    color: #ade8f4;
+    font-size: 0.95em;
+}
+
+.site-button {
+    background-color: #00cc99;
+    color: #003344;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.site-button:hover {
     background-color: #b0ffe0;
 }
