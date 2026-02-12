@@ -21,6 +21,7 @@
     <button onclick="location.href='collections.html'">Collections</button>
     <button onclick="location.href='history.html'">History</button>
     <button onclick="location.href='shop.html'">Shop</button>
+    <button onclick="location.href='cart.html'">View Cart</button>
 </nav>
 
 <main>
@@ -28,13 +29,10 @@
 
     <div class="shop-container">
 
-        <div class="souvenir-item"
-             data-id="item001"
-             title="Replica of the Starbone Fossil">
-
+        <div class="souvenir-item" title="Replica of the Starbone Fossil">
             <img src="../images/Starbonefossilreplica.png"
-     alt="Starbone fossil replica"
-     onclick="openModal(this)">
+                 alt="Starbone fossil replica"
+                 onclick="openModal(this)">
 
             <h3>Starbone Fossil Replica</h3>
 
@@ -46,18 +44,22 @@
 
             <p class="price">$24.99</p>
 
-            <button onclick="addToCart('item001')">
-                Add Starbone Fossil Replica to Cart
+            <span class="qty-badge"></span>
+
+            <button
+                onclick="addToCart(this)"
+                data-id="item001"
+                data-name="Starbone Fossil Replica"
+                data-price="24.99"
+                data-image="../images/Starbonefossilreplica.png">
+                Add to Cart
             </button>
         </div>
 
-        <div class="souvenir-item"
-             data-id="item002"
-             title="Magic Conch of the Ammonite Shell">
-
+        <div class="souvenir-item" title="Magic Conch of the Ammonite Shell">
             <img src="../images/Magicconchreplica.png"
-     alt="Magic conch shell replica"
-     onclick="openModal(this)">
+                 alt="Magic conch shell replica"
+                 onclick="openModal(this)">
 
             <h3>Magic Conch Replica</h3>
 
@@ -69,18 +71,22 @@
 
             <p class="price">$18.50</p>
 
-            <button onclick="addToCart('item002')">
-                Add Magic Conch Replica to Cart
+            <span class="qty-badge"></span>
+
+            <button
+                onclick="addToCart(this)"
+                data-id="item002"
+                data-name="Magic Conch Replica"
+                data-price="18.50"
+                data-image="../images/Magicconchreplica.png">
+                Add to Cart
             </button>
         </div>
 
-        <div class="souvenir-item"
-             data-id="item003"
-             title="Scent of the Coral Queen">
-
+        <div class="souvenir-item" title="Scent of the Coral Queen">
             <img src="../images/Coralqueenincense.png"
-     alt="Coral Queen incense"
-     onclick="openModal(this)">
+                 alt="Coral Queen incense"
+                 onclick="openModal(this)">
 
             <h3>Coral Queen Incense</h3>
 
@@ -92,18 +98,22 @@
 
             <p class="price">$12.00</p>
 
-            <button onclick="addToCart('item003')">
-                Add Coral Queen Incense to Cart
+            <span class="qty-badge"></span>
+
+            <button
+                onclick="addToCart(this)"
+                data-id="item003"
+                data-name="Coral Queen Incense"
+                data-price="12.00"
+                data-image="../images/Coralqueenincense.png">
+                Add to Cart
             </button>
         </div>
 
-        <div class="souvenir-item"
-             data-id="item004"
-             title="Totem of the Deep Ur">
-
+        <div class="souvenir-item" title="Totem of the Deep Ur">
             <img src="../images/Deepurtotem.png"
-     alt="Deep Ur totem figurine"
-     onclick="openModal(this)">
+                 alt="Deep Ur totem figurine"
+                 onclick="openModal(this)">
 
             <h3>Deep Ur Totem</h3>
 
@@ -115,8 +125,15 @@
 
             <p class="price">$29.95</p>
 
-            <button onclick="addToCart('item004')">
-                Add Deep Ur Totem to Cart
+            <span class="qty-badge"></span>
+
+            <button
+                onclick="addToCart(this)"
+                data-id="item004"
+                data-name="Deep Ur Totem"
+                data-price="29.95"
+                data-image="../images/Deepurtotem.png">
+                Add to Cart
             </button>
         </div>
 
@@ -141,8 +158,42 @@ function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
 
-function addToCart(itemId) {
-    alert("Item " + itemId + " added to cart!");
+const CART_KEY = 'museumCartV1';
+
+function readCart() {
+    try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+    catch { return []; }
+}
+
+function writeCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function addToCart(btn) {
+    const id = btn.dataset.id;
+    const name = btn.dataset.name;
+    const unitPrice = Number(btn.dataset.price);
+    const image = btn.dataset.image;
+
+    let cart = readCart();
+    const idx = cart.findIndex(it => it.id === id);
+
+    if (idx >= 0) {
+        cart[idx].qty += 1;
+    } else {
+        cart.push({ id, name, unitPrice, qty: 1, image });
+    }
+
+    writeCart(cart);
+
+    const card = btn.closest('.souvenir-item');
+    if (card) {
+        const badge = card.querySelector('.qty-badge');
+        if (badge) {
+            const item = cart.find(it => it.id === id);
+            badge.textContent = item ? `Qty: ${item.qty}` : '';
+        }
+    }
 }
 </script>
 
