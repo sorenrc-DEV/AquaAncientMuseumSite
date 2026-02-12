@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Carley Sorensen">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AquaAncient Museum - Cart</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Your Cart</h1>
+    <p class="author">Author: Carley Sorensen</p>
+</header>
+
+<nav>
+    <button onclick="location.href='../index.html'">Home</button>
+    <button onclick="location.href='staff.html'">Staff</button>
+    <button onclick="location.href='collections.html'">Collections</button>
+    <button onclick="location.href='history.html'">History</button>
+    <button onclick="location.href='shop.html'">Shop</button>
+</nav>
+
+<main>
+    <div id="cart-output"></div>
+</main>
+
+<footer>
+    <p>This is a fictitious website created purely for academic purposes.</p>
+</footer>
+
+<script>
+
+const CART_KEY = 'museumCartV1';
+const TAX_RATE = 0.102;
+const MEMBER_DISCOUNT_RATE = 0.15;
+const SHIPPING_RATE = 25.00;
+
+function readCart() {
+    try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+    catch { return []; }
+}
+
+function writeCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function clearCart() {
+    writeCart([]);
+    render();
+}
+
+function removeItem(id) {
+    let cart = readCart();
+    cart = cart.filter(item => item.id !== id);
+    writeCart(cart);
+    render();
+}
+
+function formatMoney(num) {
+    if (num < 0) {
+        return `($${Math.abs(num).toFixed(2)})`;
+    }
+    return `$${num.toFixed(2)}`;
+}
+
+function render() {
+    const output = document.getElementById('cart-output');
+    const cart = readCart();
+
+    if (cart.length === 0) {
+        output.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+    }
+
+    let itemTotal = 0;
+    let rows = "";
+
+    cart.forEach(item => {
+        const lineTotal = item.unitPrice * item.qty;
+        itemTotal += lineTotal;
+
+        rows += `
+        <tr>
+            <td><img src="${item.image}" width="50"></td>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td class="amount">${formatMoney(lineTotal)}</td>
+            <td>
+                <button onclick="removeItem('${item.id}')">Remove</button>
+            </td>
+        </tr>
+        `;
+    });
+
+    let volumeDiscountRate = 0;
+    if (itemTotal >= 200) volumeDiscountRate = 0.15;
+    else if (itemTotal >= 100) volumeDiscountRate = 0.10;
+    else if (itemTotal >= 50) volumeDiscountRate = 0.05;
+
+    const volumeDiscount = itemTotal * volumeDiscountRate;
+    const memberDiscount = 0; // off for now
+
+    const subTotal = itemTotal - volumeDiscount - memberDiscount + SHIPPING_RATE;
+    const taxAmount = subTotal * TAX_RATE;
+    const invoiceTotal = subTotal + taxAmount;
+
+    output.innerHTML = `
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th class="amount">Amount</th>
+                <th></th>
+            </tr>
+            ${rows}
+        </table>
+
+        <h3>Summary</h3>
+        <table>
+            <tr>
+                <td>Item Subtotal</td>
+                <td class="amount">${formatMoney(itemTotal)}</td>
+            </tr>
+            <tr>
+                <td>Volume Discount</td>
+                <td class="amount">${formatMoney(-volumeDiscount)}</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td class="amount">${formatMoney(SHIPPING_RATE)}</td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td class="amount">${formatMoney(taxAmount)}</td>
+            </tr>
+            <tr>
+                <td><strong>Invoice Total</strong></td>
+                <td class="amount"><strong>${formatMoney(invoiceTotal)}</strong></td>
+            </tr>
+        </table>
+
+        <br>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="location.href='shop.html'">Keep Shopping</button>
+    `;
+}
+
+render();
+</script>
+
+</body>
+</html>
