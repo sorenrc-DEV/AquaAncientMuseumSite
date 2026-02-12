@@ -48,13 +48,12 @@ p {
 }
 
 footer {
+    background: rgba(0, 40, 45, 0.75);
+    color: #cfeeee;
     text-align: center;
-    padding: 10px;
-    background-color: rgba(0, 51, 68, 0.8);
-    color: #b0ffe0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    margin-top: 30px;
 }
 
 .staff-profile {
@@ -278,4 +277,65 @@ footer {
 
 .site-button:hover {
     background-color: #b0ffe0;
+}
+
+#cart-output {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(0, 30, 40, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    color: #e8f6f9;
+}
+
+#cart-output table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#cart-output th,
+#cart-output td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+#cart-output th {
+    text-align: left;
+    font-weight: bold;
+    color: #bfefff;
+}
+
+#cart-output td {
+    color: #e8f6f9;
+}
+
+#cart-output .amount {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+#cart-output img {
+    border-radius: 6px;
+}
+
+#cart-output button {
+    background: #1c7c8c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+#cart-output button:hover {
+    background: #145e69;
+}
+
+#cart-output h3 {
+    margin-top: 20px;
+    color: #bfefff;
 }
